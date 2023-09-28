@@ -52,7 +52,7 @@ export namespace SeriesHelper {
     let index = 0;
 
     const yearsDict = _getYearsDict(games);
-    console.log(yearsDict);
+    //console.log(yearsDict);
     for (const key of Object.keys(yearsDict)) {
       const localDateTime = new Date(Number(key), 0, 1);
       const dataValue = yearsDict[key];
@@ -67,6 +67,7 @@ export namespace SeriesHelper {
   const _getYearsDict = (games: ChessGameDto[]): {[key: string]: number} => {
     const dict: {[key: number]: [number, number]} = {}
     for (const game of games) {
+      game.date = game.date.replaceAll("??", "01");
       const year = _chessDateToDate(game.date).getFullYear();
       const numOfMoves = _getNumberOfMoves(game.game);
       if (Object.keys(dict).includes(year.toString())) {

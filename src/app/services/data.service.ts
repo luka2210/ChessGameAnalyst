@@ -11,4 +11,6 @@ export class DataService {
   getRandomGame = () => this.game.chessGameGet();
 
   getGamesByLastName = (lastName: string = 'Anand') => this.game.chessGameLastNameGet(lastName);
+
+  getRelevantPlayers = () => this.game.chessGamePlayersGet();
 }

@@ -17,8 +17,10 @@
           <div class="card-body d-flex w-100">
             <vdn-time-series-chart #performance></vdn-time-series-chart>
           </div>
-          <div class="card-footer text-body-secondary">
-            2 days ago
+          <div class="card-footer">
+            <vdn-simple-select [(ngModel)]="lastName" (ngModelChange)="displayData()" [containerBody]="true">
+              <vdn-option *ngFor="let playerLastName of playersLastName" [value]="playerLastName" [text]="playerLastName"> {{playerLastName}} </vdn-option>
+            </vdn-simple-select>
           </div>
         </div>
       </div>

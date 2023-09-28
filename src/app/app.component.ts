@@ -10,9 +10,5 @@ export class AppComponent {
   title = 'ChessGameAnalyst';
   constructor(private data: DataService) {}
   ngOnInit() {
-    this.data.getRandomGame().subscribe({
-      next: game => console.log(game),
-      error: err => console.error(err)
-    });
   }
 }
