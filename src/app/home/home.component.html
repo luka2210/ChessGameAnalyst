@@ -18,9 +18,10 @@
             <vdn-time-series-chart #performance></vdn-time-series-chart>
           </div>
           <div class="card-footer">
-            <vdn-simple-select [(ngModel)]="lastName" (ngModelChange)="displayData()" [containerBody]="true">
+            <vdn-simple-select [(ngModel)]="lastName" (ngModelChange)="displayData()" [containerBody]="true" class="">
               <vdn-option *ngFor="let playerLastName of playersLastName" [value]="playerLastName" [text]="playerLastName"> {{playerLastName}} </vdn-option>
             </vdn-simple-select>
+            <button class="btn btn-primary" (click)="openTableModal()">Open Modal</button>
           </div>
         </div>
       </div>

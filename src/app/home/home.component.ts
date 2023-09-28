@@ -3,6 +3,8 @@ import { VdnChartComponent, VdnChartConfiguration } from 'vdn-chart';
 import { DataService } from '../services/data.service';
 import { SeriesHelper } from './series.helper';
 import { Subscription } from 'rxjs';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { TableModalComponent } from '../table-modal/table-modal.component';
 
 @Component({
   selector: 'home',
@@ -18,7 +20,7 @@ export class HomeComponent {
   playersLastName: string[] = [];
   lastName:string = '';
 
-  constructor(private data: DataService) {}
+  constructor(private data: DataService, private modalService: NgbModal) {}
 
   ngOnInit() {}
   ngAfterViewInit() {
@@ -47,6 +49,10 @@ export class HomeComponent {
         });
       }
     });
+  }
+
+  openTableModal() {
+    this.modalService.open(TableModalComponent);
   }
 
   ngOnDestroy() {
