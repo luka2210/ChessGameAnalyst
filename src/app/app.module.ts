@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { VdnFormsModule, VdnTableModule } from 'vdn-maui';
 import { TableModalComponent } from './table-modal/table-modal.component';
 import { RouterModule } from '@angular/router';
+import { WinsChartComponent } from './wins-chart/wins-chart.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -24,6 +25,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     HomeComponent,
     TableModalComponent,
+    WinsChartComponent,
   ],
   imports: [
     BrowserModule,
