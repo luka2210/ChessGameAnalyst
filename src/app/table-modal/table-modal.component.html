@@ -1,1 +1,13 @@
-<p>table-modal works!</p>
+<div class="card text-center flex-grow-1">
+  <div class="card-header">
+    {{inputData[1]}}
+  </div>
+  <div class="card-body" style="height:400px">
+    <vdn-table [data]="tableRows" [columns]="tableColumns"
+      [minColumns]="4" [baseStyle]="tableBaseStyle"></vdn-table>
+  </div>
+  <div class="card-footer text-body-secondary d-flex justify-content-end">
+    <button class="btn btn-secondary btn-sm" (click)="close()"><i class="fa-regular fa-circle-xmark me-1"></i>{{"Table.Close" | translate}}</button>
+  </div>
+</div>
+

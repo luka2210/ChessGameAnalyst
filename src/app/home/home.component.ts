@@ -5,6 +5,7 @@ import { SeriesHelper } from './series.helper';
 import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TableModalComponent } from '../table-modal/table-modal.component';
+import { ChessGameDto } from 'api';
 
 @Component({
   selector: 'home',
@@ -17,6 +18,7 @@ export class HomeComponent {
   $relevantPlayers: Subscription;
   $games: Subscription;
 
+  chessGames: ChessGameDto[] = [];
   playersLastName: string[] = [];
   lastName:string = '';
 
@@ -39,6 +41,7 @@ export class HomeComponent {
 
         this.$games = this.data.getGamesByLastName(this.lastName).subscribe({
           next: content => {
+            this.chessGames = content;
             const initChartSeries = SeriesHelper.GamesToChartSeries(content, this.lastName);
             const globalChart = new VdnChartConfiguration.GlobalChart();
             globalChart.contextMapVisible = false;
@@ -52,7 +55,8 @@ export class HomeComponent {
   }
 
   openTableModal() {
-    this.modalService.open(TableModalComponent);
+    const modal = this.modalService.open(TableModalComponent);
+    modal.componentInstance.inputData = [this.chessGames, this.lastName]
   }
 
   ngOnDestroy() {

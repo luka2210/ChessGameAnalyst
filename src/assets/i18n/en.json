@@ -2,5 +2,9 @@
   "Title": "Chess Game Analyst",
   "Performance": {
     "OverTime": "Player performance over time"
+  },
+  "Table": {
+    "OpenPerformanceTable": "Open performance table",
+    "Close": "Close"
   }
 }

@@ -11,8 +11,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { VdnChartModule } from 'vdn-chart';
 import { FormsModule } from '@angular/forms';
-import { VdnFormsModule } from 'vdn-maui';
+import { VdnFormsModule, VdnTableModule } from 'vdn-maui';
 import { TableModalComponent } from './table-modal/table-modal.component';
+import { RouterModule } from '@angular/router';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -33,7 +34,6 @@ export function HttpLoaderFactory(http: HttpClient) {
       return cfg;
     }),
     HttpClientModule,
-    NgbModule,
     TranslateModule.forRoot(
       {
         defaultLanguage: 'en',
@@ -48,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FormsModule,
     VdnFormsModule.forRoot({ dateFormat: 'dd.MM.yyyy', dateTimeFormat: 'dd.MM.yyyy HH:mm:ss', preferLocale: false }),
     NgbModule,
+    VdnTableModule.forRoot({ dateFormat: 'dd.MM.yyyy HH:mm:ss', dateTimeFormat: 'dd.MM.yyyy HH:mm:ss', floatFormat: '1.2-2' }),
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -5,6 +5,14 @@ import { VdnChartConfiguration } from "vdn-chart";
 export namespace SeriesHelper {
 
   export const GamesToChartSeries = (games: ChessGameDto[], lastName: string): VdnChartConfiguration.InitChartSeries[] => {
+    const [gamesWon, gamesLost, gamesDraw] = Split(games, lastName);
+    const chartSeriesWon = new VdnChartConfiguration.InitChartSeries(_getSeriesConfig(300, "Games Won"), _getSeriesDataPoints(gamesWon));
+    const chartSeriesLost = new VdnChartConfiguration.InitChartSeries(_getSeriesConfig(400, "Games Lost"), _getSeriesDataPoints(gamesLost));
+    const chartSeriesDraw = new VdnChartConfiguration.InitChartSeries(_getSeriesConfig(500, "Games Draw"), _getSeriesDataPoints(gamesDraw));
+    return [chartSeriesWon, chartSeriesLost, chartSeriesDraw];
+  }
+
+  export const Split = (games: ChessGameDto[], lastName: string): ChessGameDto[][] => {
     const gamesWon: ChessGameDto[] = [];
     const gamesLost: ChessGameDto[] = [];
     const gamesDraw: ChessGameDto[] = [];
@@ -33,10 +41,8 @@ export namespace SeriesHelper {
         gamesDraw.push(game);
       }
     }
-    const chartSeriesWon = new VdnChartConfiguration.InitChartSeries(_getSeriesConfig(300, "Games Won"), _getSeriesDataPoints(gamesWon));
-    const chartSeriesLost = new VdnChartConfiguration.InitChartSeries(_getSeriesConfig(400, "Games Lost"), _getSeriesDataPoints(gamesLost));
-    const chartSeriesDraw = new VdnChartConfiguration.InitChartSeries(_getSeriesConfig(500, "Games Draw"), _getSeriesDataPoints(gamesDraw));
-    return [chartSeriesWon, chartSeriesLost, chartSeriesDraw];
+
+    return [gamesWon, gamesLost, gamesDraw];
   }
 
   const _getSeriesConfig = (id: number, name: string) => {

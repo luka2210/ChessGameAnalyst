@@ -13,4 +13,6 @@ export class DataService {
   getGamesByLastName = (lastName: string = 'Anand') => this.game.chessGameLastNameGet(lastName);
 
   getRelevantPlayers = () => this.game.chessGamePlayersGet();
+
+  getAllGames = () => this.game.chessGameAllGet();
 }
