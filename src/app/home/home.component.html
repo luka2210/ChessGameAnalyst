@@ -30,18 +30,18 @@
       <div class="col d-flex">
         <div class="card text-center flex-grow-1">
           <div class="card-header">
-            Featured
+            {{ 'ChessData' | translate }}
           </div>
           <div class="card-body d-flex w-100">
-            <div class="w-50">
-              <app-wins-chart></app-wins-chart>
+            <div class="w-25">
+              <app-wins-chart (totalNumGames)="totalGames=$event"></app-wins-chart>
             </div>
-            <div class="w-50">
-              <app-wins-chart></app-wins-chart>
+            <div class="w-75">
+              <app-years-chart></app-years-chart>
             </div>
           </div>
           <div class="card-footer text-body-secondary">
-            2 days ago
+            {{ 'TotalGames' | translate }} {{ totalGames }}
           </div>
         </div>
       </div>

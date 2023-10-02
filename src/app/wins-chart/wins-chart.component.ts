@@ -1,8 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { VdnBarChartComponent } from 'vdn-chart';
 import { Subscription } from 'rxjs';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { WinsChartHelper } from './wins-chart.helper';
 
 @Component({
@@ -13,6 +12,8 @@ import { WinsChartHelper } from './wins-chart.helper';
 export class WinsChartComponent {
   @ViewChild('winsChart') chart: VdnBarChartComponent;
 
+  @Output() totalNumGames: EventEmitter<number> = new EventEmitter<number>();
+
   $allGamesSubscription: Subscription;
 
   constructor(private dataService: DataService) {}
@@ -21,6 +22,7 @@ export class WinsChartComponent {
     this.$allGamesSubscription = this.dataService.getAllGames().subscribe({
       next: content => {
         WinsChartHelper.InitBarChart(this.chart, content);
+        this.totalNumGames.emit(content.length)
       },
       error: err => {
         console.log(err);

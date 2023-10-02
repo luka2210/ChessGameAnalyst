@@ -1,8 +1,9 @@
 import { ChessGameDto } from "api";
 import { VdnBarChartComponent, VdnBarChartConfiguration } from "vdn-chart";
-import { values } from 'lodash';
 
 export namespace WinsChartHelper {
+  const secondary = getComputedStyle(document.documentElement).getPropertyValue('--bs-secondary')
+
   export const InitBarChart = (barChart: VdnBarChartComponent, allGames: ChessGameDto[]): void => {
     const [whiteWins, blackWins] = _getWins(allGames);
     const data: VdnBarChartConfiguration.BarChartData = _getBarChartData(whiteWins, blackWins);
@@ -12,8 +13,8 @@ export namespace WinsChartHelper {
 
   const _getBarChartData = (whiteWins: number, blackWins: number): VdnBarChartConfiguration.BarChartData => {
     let series: VdnBarChartConfiguration.BarChartSeries[] = [];
-    let categories: string[] = ['White number of wins', 'Black number of wins'];
-    let se = new VdnBarChartConfiguration.BarChartSeries('Wins distribution', [whiteWins, blackWins], values(_barChartColor), true);
+    let categories: string[] = ['White wins', 'Black wins'];
+    let se = new VdnBarChartConfiguration.BarChartSeries('Wins distribution', [whiteWins, blackWins], secondary, true);
     se.noLabel = false;
     series.push(se);
     return new VdnBarChartConfiguration.BarChartData(categories, series);
@@ -36,27 +37,4 @@ export namespace WinsChartHelper {
     return count;
   }, 0);
 
-  class _barChartColor {
-    static BarPallete = {
-        pastelOrange: '#FFC145',
-        uclaBlue: '#5B5F97',
-        raspberryViolet: '#8F2D56',
-        azureBlue: '#0496FF',
-        rubyRed: '#D81159',
-        goldenrod: '#D5A021',
-        auqamarine: '#68EDC6',
-        golderBrown: '#99621E',
-        mughalGreen: '#2C5530',
-        deepTurquoise: '#0D5C63',
-        tiffanyBlue: '#03B5AA',
-        mayaBlue: '#56CBF9',
-        darkSiena: '#3C1518',
-        malachiteGreen: '#61E786',
-        carmineRed: '#8B2635',
-        wenge: '#63595C',
-        spaceGrey: '#404E4D'
-    }
-
-    constructor() {}
- }
 }

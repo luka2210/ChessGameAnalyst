@@ -15,6 +15,7 @@ import { VdnFormsModule, VdnTableModule } from 'vdn-maui';
 import { TableModalComponent } from './table-modal/table-modal.component';
 import { RouterModule } from '@angular/router';
 import { WinsChartComponent } from './wins-chart/wins-chart.component';
+import { YearsChartComponent } from './years-chart/years-chart.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -26,6 +27,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     TableModalComponent,
     WinsChartComponent,
+    YearsChartComponent,
   ],
   imports: [
     BrowserModule,

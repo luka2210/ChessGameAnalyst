@@ -22,6 +22,14 @@ export class HomeComponent {
   playersLastName: string[] = [];
   lastName:string = '';
 
+  private _totalGames: number = 0;
+  public get totalGames(): number {
+    return this._totalGames;
+  }
+  public set totalGames(value: number) {
+    this._totalGames = value;
+  }
+
   constructor(private data: DataService, private modalService: NgbModal) {}
 
   ngOnInit() {}

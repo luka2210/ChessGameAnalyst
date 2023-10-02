@@ -3,6 +3,8 @@
   "Performance": {
     "OverTime": "Player performance over time"
   },
+  "ChessData": "Data distributions",
+  "TotalGames": "Total number of games:",
   "Table": {
     "OpenPerformanceTable": "Open performance table",
     "Close": "Close"
